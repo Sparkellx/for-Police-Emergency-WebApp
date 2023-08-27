@@ -194,6 +194,10 @@ opacity: 0.3;
     transform: scale(1.05) rotate(-1deg);
 }
 
+.play-button:hover {
+    height: 80px;
+}
+
 .play{
     position: absolute;
     height: 85%;
@@ -209,6 +213,7 @@ opacity: 0.3;
     position: relative;
     margin-top: 700px;  
     margin-left: -20px;
+    cursor: pointer;
 }
 
 .watch{
