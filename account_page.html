@@ -6,6 +6,8 @@
 
 <body>
 
+    
+
     <div class="outer-container">
 
         <div class="flex-container flex-container-1">
@@ -14,7 +16,8 @@
         <p class="log-in"><b>Log ln </b></p><br>
         <center><input type="text" class="modern-input" placeholder="Username">
         <center><input type="password" class="modern-input2" placeholder="Password">
-        <br><a href="index.html"><img class="back" src="back-icon.svg"></a>
+       <br><a href="index.html"> <img class="back" src="back-icon.svg"></a>
+        
         <br> <p class="back2">back to home page</p> 
         <br>
         <button class="button-3">Log In</button>
@@ -25,11 +28,11 @@
             <p class="p3">Instant Aid, Anytime, Anywhere: Your<br>Lifesaving Web Application</p>
             <br> 
             <center><p class="p4"><b>Sign Up</b></p></center>
-            <center><input type="text" class="su-email" placeholder="Email">
-            <br><center><input type="text" class="su-name" placeholder="Name">
-            <br><center><input type="text" class="su-usn" placeholder="Username">
-            <br><center><input type="password" class="su-pw" placeholder="Password">
-                <button class="button-4">Sign Up</button>
+            <center><input type="text" id="email" class="su-email" placeholder="Email">
+            <br><center><input type="text" id="name" class="su-name" placeholder="Name">
+            <br><center><input type="text" id="username" class="su-usn" placeholder="Username">
+            <br><center><input type="password" id="password" class="su-pw" placeholder="Password">
+                <button id="signUp" class="button-4">Sign Up</button>
 
                 
 
@@ -37,7 +40,61 @@
         </div>
     </div>
   
+<script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+        import { getDatabase } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-analytics.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
 
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyAtaacFSL4tWoPS5_xxhvDZCVixtKDIwyg",
+          authDomain: "capstonedb-95953.firebaseapp.com",
+          databaseURL: "https://capstonedb-95953-default-rtdb.asia-southeast1.firebasedatabase.app",
+          projectId: "capstonedb-95953",
+          storageBucket: "capstonedb-95953.appspot.com",
+          messagingSenderId: "271279081966",
+          appId: "1:271279081966:web:7bd32639bba77a28b766ff",
+          measurementId: "G-8STPPH5R8N"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+        const analytics = getAnalytics(app);
+        const auth = getAuth();
+
+        signUp.addEventListner('click', (e) => {
+
+var email = document.getElementById('').value;
+var name = document.getElementById('').value;
+var username = document.getElementById('').value;
+var password = document.getElementById('').value;
+
+            createUserWithEmailAndPassword(auth, email, name, username, password)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    alert('signed up successfully!');
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+
+    alert(errorMessage);
+    // ..
+  });
+        });
+
+      </script>
 
 </body>
+
+
 </html>
